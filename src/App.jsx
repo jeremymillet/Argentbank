@@ -5,7 +5,6 @@ import Router from './Router'
 import { store } from './store';
 
 function App() {
-
   return (
     <Provider store={store}>
       <Router/>

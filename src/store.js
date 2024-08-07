@@ -2,8 +2,10 @@ import { configureStore, createSlice } from "@reduxjs/toolkit";
 
 // Initial state
 let initialState = {
-  value: null,
   login: false,
+  token: "",
+  firstName: "",
+  lastName: "",
 };
 
 // Create a slice
@@ -11,17 +13,21 @@ const slice = createSlice({
   name: "example",
   initialState,
   reducers: {
-    setValue: (state, action) => {
-      state.value = action.payload;
+    setToken: (state, action) => {
+      state.token = action.payload;
+      state.login = !!action.payload 
     },
-    setLogin: (state, action) => {
-      state.login = action.payload;
+    setFirstName: (state, action) => {
+      state.firstName = action.payload;
+    },
+    setLastName: (state, action) => {
+      state.lastName = action.payload;
     },
   },
 });
 
 // Export the actions so they can be used in components
-export const { setValue, setLogin } = slice.actions;
+export const {setToken,setFirstName,setLastName } = slice.actions;
 
 // Create the store
 export const store = configureStore({

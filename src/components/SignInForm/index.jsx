@@ -1,10 +1,11 @@
-import useFetchLogin from '../../hook/useFetchLogin';
-import { Navigate, useNavigate } from 'react-router-dom';
+
+import {useNavigate } from 'react-router-dom';
 import './SignInForm.css';
 import { useState } from 'react';
+import useFetchPostLogin from '../../hook/useFetchPostLogin';
 
 function SignInForm() {
-    const { Login, isloaging: isLoadingLogin, error: errorLogin } = useFetchLogin();
+    const { Login, isloaging: isLoadingLogin, error: errorLogin } = useFetchPostLogin();
     const [submitButtonDisabled, setSubmitButtonDisabled] = useState(true);
     const navigate = useNavigate()
     
@@ -24,7 +25,6 @@ function SignInForm() {
         const password = event.target.password.value;
 
         const payload = { email, password };
-
         // Appelez ici votre fonction hook avec le payload
         Login(payload).then(() => { 
             navigate("/user")
