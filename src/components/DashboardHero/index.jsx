@@ -12,12 +12,8 @@ function DashboardHero() {
     const dispatch = useDispatch()
 
     function toggleForm() {
-        if (edit === false) {
-            setEdit(true)
-        }
-        else if (edit === true) {
-            setEdit(false)
-        }
+        setEdit((state)=> !state);
+
     }
 
     const handleSubmit = (event) => {
@@ -34,12 +30,12 @@ function DashboardHero() {
     
     return (
         <div className='dashboard-hero'>
-            {edit ? <div>
-                <h1>Welcome back</h1>
+            <h1>Welcome back { !edit && <><br /> {firstName} {lastName}</>} !</h1>
+            {edit ? <>
                 <form onSubmit={handleSubmit}>
                     <div className='input-container'>
-                        <input className='form-input' name='firstName' type="text" id="firstName" placeholder={firstName}/>
-                        <input className='form-input' type="text" name='lastName' id="lastName" placeholder={lastName}/>
+                        <input className='form-input' name='firstName' type="text" id="firstName" defaultValue={firstName}/>
+                        <input className='form-input' type="text" name='lastName' id="lastName" defaultValue={lastName}/>
                     </div>
                     <div className='btn-container'>
                         <button type='submit' className="edit-button">Save</button>
@@ -48,11 +44,9 @@ function DashboardHero() {
                     {errorUpdate && <div>error</div>}
                     {isLoadingUpdate && <div>chargement</div>}
                 </form>
-            </div> :
-            <div>
-                <h1>Welcome back<br /> {firstName} {lastName} !</h1>
+            </> :
                 <button onClick={toggleForm} className="edit-button">Edit Name</button>
-            </div>}
+            }
         </div>
     )
 }
