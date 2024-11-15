@@ -23,7 +23,7 @@ Une application rapide et moderne construite avec [Vite](https://vitejs.dev/). C
 Créez un fichier nommé `.env` à la racine du projet. Dans ce fichier, ajoutez votre URL d'API en définissant la variable suivante :  
 
 ```env
-VITE_URL_APIL=https://example.com/api
+VITE_URL_API="http://localhost:3001/api/v1"
 ```
 
 
